@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Online tool to transliterate between Indic scripts">
+    <title>Indic script transliteration</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .container {
+          width: auto;
+          max-width: 680px;
+          padding: 0 15px;
+        }
+        
+        .footer {
+          background-color: #f5f5f5;
+        }
+    </style>
+    
+</head>
+
+<body class="d-flex flex-column h-100">
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <h1 class="mt-3">Indic script transliteration</h1>
+        <form>
+
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputSelect">From</label>
+                            </div>
+
+                            <select id="inputSelect" title="Choose the format of the text you'd like to transliterate." class="custom-select">
+                                <optgroup label="Indian">
+                                    <option selected value="devanagari">Devanagari (अ)</option>
+                                    <option value="bengali">Bengali (অ)</option>
+                                    <option value="gujarati">Gujarati (અ)</option>
+                                    <option value="oriya">Oriya (ଅ)</option>
+                                    <option value="tamil">Tamil (அ)</option>
+                                    <option value="telugu">Telugu (అ)</option>
+                                    <option value="kannada">Kannada (ಅ)</option>
+                                    <option value="malayalam">Malayalam (അ)</option>
+                                </optgroup>
+                                <optgroup label="Roman">
+                                    <option value="iast">IAST</option>
+                                    <option value="hk">Harvard-Kyoto</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="outputSelect">To</label>
+                            </div>
+
+                            <select id="outputSelect" title="Choose which format Sanscript should produce." class="custom-select">
+                                <optgroup label="Roman">
+                                    <option selected value="iast">IAST</option>
+                                    <option value="hk">Harvard-Kyoto</option>
+                                </optgroup>
+                                <optgroup label="Indian">
+                                    <option value="devanagari">Devanagari (अ)</option>
+                                    <option value="bengali">Bengali (অ)</option>
+                                    <option value="gujarati">Gujarati (અ)</option>
+                                    <option value="oriya">Oriya (ଅ)</option>
+                                    <option value="tamil">Tamil (அ)</option>
+                                    <option value="telugu">Telugu (అ)</option>
+                                    <option value="kannada">Kannada (ಅ)</option>
+                                    <option value="malayalam">Malayalam (അ)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" rows="5" name="TextToConvert" id="from_text" autofocus="" spellcheck="false" placeholder="Please enter your text here."></textarea>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-outline-primary btn-block" name="ConvertToUnicode" id="ConvertToUnicode" value="Convert" onclick="convert();" type="button">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="5" name="ConvertedText" id="to_text" readonly="readonly" spellcheck="false" placeholder="Converted text will appear here."></textarea>
+            </div>
+        </form>
+    </div>
+    <script src="sanscript.js"></script>
+    <script>
+        function convert() {
+            input = document.getElementById("from_text").value;
+            fromcoding = document.getElementById('inputSelect').value;
+            to = document.getElementById('outputSelect').value;
+            document.getElementById("to_text").value = Sanscript.t(input, fromcoding, to);
+        }
+    </script>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span>
+        <p>Powered by The Ekvastra Team. <a rel="external" href="https://wiki.ekvastra.in/">Wiki.</a> <a rel="external" href="https://ekvastra.in/">Blog.</a> <a rel="external" href="https://ekvastra.in/privacy-policy">Privacy policy.</a> <a rel="external" href="https://ekvastra.in/contact-us">Contact us.</a></p>
+    </span>
+  </div>
+</footer>
+
+</body>
+
+</html>
